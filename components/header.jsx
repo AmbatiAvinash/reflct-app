@@ -1,12 +1,15 @@
-import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { PenBox, FolderOpen } from "lucide-react";
-import UserMenu from "./user-menu";
 import { Button } from "./ui/button";
+import Link from "next/link";
+import { PenBox, FolderOpen } from "lucide-react";
+import Image from "next/image";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import UserMenu from "./user-menu";
+import { checkUser } from "@/lib/checkUser";
 
-const Header = () => {
+async function Header() {
+  await checkUser();
+
   return (
     <header className="container mx-auto">
       <nav className="py-6 px-4 flex justify-between items-center">
@@ -46,6 +49,6 @@ const Header = () => {
       </nav>
     </header>
   );
-};
+}
 
 export default Header;
